@@ -2,9 +2,27 @@
     font-family: arial;
 }
 
-body{
+body {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #ccc;
+    background-color: #0b8132;
+}
+.app {
+    background-color: #cf6400;
+    padding: 16px;
+    border-radius: 10px;    
+}
+input {
+    margin: 8px 0;
+    padding: 8px;
+    outline: none;
+}
+#btn-calcular {
+    background-color: green;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
 }
