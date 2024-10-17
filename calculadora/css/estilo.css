@@ -6,12 +6,13 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #0b8132;
+    background-color: #acacac;
 }
 .app {
-    background-color: #cf6400;
+    background-color: #000000;
     padding: 16px;
-    border-radius: 10px;    
+    border-radius: 10px; 
+    color:#fff;   
 }
 input {
     margin: 8px 0;
@@ -19,7 +20,7 @@ input {
     outline: none;
 }
 #btn-calcular {
-    background-color: green;
+    background-color: rgb(255, 0, 0);
     color: #fff;
     padding: 12px;
     border: none;

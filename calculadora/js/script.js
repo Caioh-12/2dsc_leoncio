@@ -20,5 +20,29 @@ const multiplicacao = document.querySelector('.multiplicacao')
 
 // cria a função calcular
 
+function calcular(){
+    const n1 = Number(numero1.value)
+    const n2 = Number(numero2.value)
+
+    if(typeof n1 === 'number' 
+        && typeof n2 === 'number') {
+            const add = `O resultado da Adição é: ${n1+n2}`
+            const div = `O resultado da Divisão é: ${n1/n2}`
+            const sub = `O resultado da Subtração é: ${n1-n2}`
+            const mult = `O resultado da Multiplicação é: ${n1*n2}`
+    //alert(adicao)
+    adicao.innerHTML = add
+    divisao.innerHTML = div
+    subtracao.innerHTML = sub
+    multiplicacao.innerHTML = mult
+    }
+    else {
+        alert('por favor, digite um numero correto')
+    }
+}
 
 // adiciona escutar de eventos
+btncalcular.addEventListener('click', function(evento){
+    evento.preventDefault() 
+    calcular()
+})
