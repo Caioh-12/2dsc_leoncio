@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário em JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .calendar {
+            max-width: 600px;
+            margin: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .header button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calendar">
+        <div class="header">
+            <button onclick="changeMonth(-1)">&#8592; Anterior</button>
+            <h2 id="month-year"></h2>
+            <button onclick="changeMonth(1)">Próximo &#8594;</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dom</th>
+                    <th>Seg</th>
+                    <th>Ter</th>
+                    <th>Qua</th>
+                    <th>Qui</th>
+                    <th>Sex</th>
+                    <th>Sáb</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+                <!-- Os dias serão inseridos aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let currentDate = new Date();
+
+        // Função para exibir o calendário
+        function showCalendar() {
+            const month = currentDate.getMonth(); // Mês atual (0-11)
+            const year = currentDate.getFullYear(); // Ano atual
+
+            // Exibir o mês e o ano no cabeçalho
+            document.getElementById('month-year').innerText = `${getMonthName(month)} ${year}`;
+
+            // Determinar o primeiro dia do mês e o número de dias no mês
+            const firstDay = new Date(year, month, 1).getDay(); // Dia da semana do primeiro dia (0 - domingo)
+            const daysInMonth = new Date(year, month + 1, 0).getDate(); // Número de dias no mês
+
+            // Preencher a tabela com os dias
+            const calendarBody = document.getElementById('calendar-body');
+            calendarBody.innerHTML = ''; // Limpar a tabela antes de preencher novamente
+
+            let row = document.createElement('tr');
+            let cellCount = 0;
+
+            // Criar células vazias até o primeiro dia
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('td');
+                row.appendChild(emptyCell);
+                cellCount++;
+            }
+
+            // Adicionar os dias do mês
+            for (let day = 1; day <= daysInMonth; day++) {
+                const cell = document.createElement('td');
+                cell.innerText = day;
+                row.appendChild(cell);
+                cellCount++;
+
+                // Se a linha tiver 7 células, criar uma nova linha
+                if (cellCount === 7) {
+                    calendarBody.appendChild(row);
+                    row = document.createElement('tr');
+                    cellCount = 0;
+                }
+            }
+
+            // Adicionar a última linha, caso tenha menos de 7 células
+            if (cellCount > 0) {
+                calendarBody.appendChild(row);
+            }
+        }
+
+        // Função para obter o nome do mês
+        function getMonthName(month) {
+            const months = [
+                'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ];
+            return months[month];
+        }
+
+        // Função para mudar o mês (anterior ou próximo)
+        function changeMonth(offset) {
+            currentDate.setMonth(currentDate.getMonth() + offset);
+            showCalendar();
+        }
+
+        // Exibir o calendário inicial
+        showCalendar();
+    </script>
+
+</body>
+</html>

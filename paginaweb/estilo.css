@@ -1,37 +1,70 @@
-.fundo {
-    background-color: gold;
-    width: 1000px;
-    height: 980;
-    padding: 5px;
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    width: 100%;
+    background-color: rgb(254, 221, 255);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20;
+}
+
+.container {
+    background-color: gold;
+    width: 65%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 1px; 
+}
 .alimentacao {
     background-color: white;
-    width: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 50px;
-    padding: 10px;
-
+    padding: 20px;
+    margin: 15px;
 }
-
 #icon {
     width: 45px;
-
 }
-
 .img-alimentacao {
     width: 250px;
     height: 125px;
 }
-
 .topbar {
     background-color: black;
-    width: 1010px;
+    width: 65%;
     height: 980;
-    
-
+    display: flex;
+}
+.treinos{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+}
+.botão {
+    background-color: #FF7801;
+    border: none;
+    width: 260px;
+    height: 75px;
+    margin: 28px;
+}
+.calendario {
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    margin: 15px;
+}
+#date {
+    width: 100%;
 }
